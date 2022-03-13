@@ -1,7 +1,7 @@
 from base import BaseDay
 
 
-class Day6(BaseDay):
+class Day7(BaseDay):
     def __init__(self, path):
         BaseDay.__init__(self, path)
 

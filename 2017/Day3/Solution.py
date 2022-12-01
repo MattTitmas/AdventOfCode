@@ -2,7 +2,7 @@ from aoc import get_input
 from utils import function_timer_avg, function_timer
 
 
-@function_timer
+@function_timer_avg
 def part1(data):
     data = int(data)
     counter = 0
@@ -10,7 +10,7 @@ def part1(data):
         counter += 1
     return counter - 1 - (counter ** 2 - data)
 
-@function_timer
+@function_timer_avg
 def part2(data):
     # can be found by looking at OEIS #A141481 https://oeis.org/A141481
     return 279138

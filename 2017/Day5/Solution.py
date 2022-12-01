@@ -1,6 +1,3 @@
-from collections import Counter
-
-from numba import jit
 from aoc import get_input
 from utils import function_timer_avg, function_timer
 

@@ -2,8 +2,8 @@ import requests
 from pathlib import Path
 
 
-session_cookie = '53616c7465645f5f19eb917ec65266c3a14786c1715903010082dc17c3c1ba95' \
-                 'ab62acaac48643de4386e351b7d8144e594056724924bf47a343024f7cc1c210 '
+session_cookie = '' \
+                 ' '
 
 def get_input(day: int, year: int):
     Path(f'Day{day}').mkdir(exist_ok=True)

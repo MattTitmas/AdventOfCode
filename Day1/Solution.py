@@ -1,13 +1,13 @@
-from utils import function_timer
+from utils import function_timer, function_timer_avg
 from aoc import get_input
 
 
-@function_timer
+@function_timer_avg
 def part1(data):
     return max([sum(i) for i in data])
 
 
-@function_timer
+@function_timer_avg
 def part2(data):
     summed_data = [sum(i) for i in data]
     value_one = max(summed_data)

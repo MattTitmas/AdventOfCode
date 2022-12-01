@@ -1,1 +1,1 @@
-from .timer import function_timer
+from .timer import function_timer, function_timer_avg

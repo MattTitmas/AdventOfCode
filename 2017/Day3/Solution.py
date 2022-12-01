@@ -1,5 +1,3 @@
-import requests
-
 from aoc import get_input
 from utils import function_timer_avg, function_timer
 

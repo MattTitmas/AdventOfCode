@@ -28,8 +28,6 @@ def part1(data):
         seen.add(tuple(data))
 
 
-
-
 @function_timer_avg
 def part2(data):
     data = list(map(lambda x: int(x), data.split('\t')))
@@ -58,6 +56,8 @@ def part2(data):
             return count - seen_at[tuple(data)]
         seen.add(tuple(data))
         seen_at[tuple(data)] = count
+
+
 def main():
     data = get_input(6, 2017)
     print(f'Part 1: {part1(data)}')

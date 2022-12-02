@@ -6,19 +6,21 @@ def function_timer(func):
         start = timer()
         result = func(*args, **kwargs)
         end = timer()
-        print(f'{func.__name__} took {end-start} seconds to complete.')
+        print(f'{func.__name__} took {end - start} seconds to complete.')
         return result
+
     return wrap
 
 
 def function_timer_avg(func):
     def wrap(*args, **kwargs):
         time_taken = 0
-        for i in range(100):
+        for i in range(10000):
             start = timer()
             result = func(*args, **kwargs)
             end = timer()
-            time_taken += end-start
-        print(f'{func.__name__} took {(time_taken) / 100} seconds to complete on average.')
+            time_taken += end - start
+        print(f'{func.__name__} took {(time_taken) / 10000} seconds to complete on average.')
         return result
+
     return wrap

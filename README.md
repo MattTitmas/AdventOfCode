@@ -2,7 +2,7 @@
 Advent of Code Solutions
 </h1>
 <h2 align="center">
-  2022 - 6 ⭐
+  2022 - 8 ⭐
 </h2>
 <h3>
     Day 1

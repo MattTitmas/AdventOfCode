@@ -2,7 +2,7 @@ from aoc import get_input
 from utils import function_timer_avg, function_timer
 
 
-@function_timer
+@function_timer_avg
 def part1(data):
     steps = data.split(',')
     rules = {
@@ -22,7 +22,7 @@ def part1(data):
     return sum([abs(i) for i in list(positions.values())]) // 2
 
 
-@function_timer
+@function_timer_avg
 def part2(data):
     steps = data.split(',')
     rules = {

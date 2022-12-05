@@ -2,7 +2,7 @@ from aoc import get_input
 from utils import function_timer, function_timer_avg
 
 
-@function_timer
+@function_timer_avg
 def part1(data):
     starting_crates = data.split('\n\n')[0]
     commands = data.split('\n\n')[1]
@@ -20,7 +20,7 @@ def part1(data):
 
     return "".join([i[-1] for i in crates])
 
-@function_timer
+@function_timer_avg
 def part2(data):
     starting_crates = data.split('\n\n')[0]
     commands = data.split('\n\n')[1]

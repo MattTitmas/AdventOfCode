@@ -1,6 +1,11 @@
-def part1():
-    points = [[int(j) for j in i.split(",")] for i in open("input.txt","r").read().split("\n\n")[0].split("\n")]
-    folds = [[int(j) if j.isnumeric() else j for j in i.split("along ")[1].split("=")] for i in open("input.txt","r").read().split("\n\n")[1].split("\n")]
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
+@function_timer_avg
+def part1(data):
+    points = [[int(j) for j in i.split(",")] for i in data.split("\n\n")[0].split("\n")]
+    folds = [[int(j) if j.isnumeric() else j for j in i.split("along ")[1].split("=")] for i in data.split("\n\n")[1].split("\n")]
 
     for i in range(0,1):
         direction, amount = folds[i][0],folds[i][1]
@@ -19,9 +24,10 @@ def part1():
 
     return 0
 
-def part2():
-    points = [[int(j) for j in i.split(",")] for i in open("input.txt","r").read().split("\n\n")[0].split("\n")]
-    folds = [[int(j) if j.isnumeric() else j for j in i.split("along ")[1].split("=")] for i in open("input.txt","r").read().split("\n\n")[1].split("\n")]
+@function_timer_avg
+def part2(data):
+    points = [[int(j) for j in i.split(",")] for i in data.split("\n\n")[0].split("\n")]
+    folds = [[int(j) if j.isnumeric() else j for j in i.split("along ")[1].split("=")] for i in data.split("\n\n")[1].split("\n")]
 
     for i in range(0,len(folds)):
         direction, amount = folds[i][0],folds[i][1]
@@ -53,7 +59,13 @@ def part2():
     
     return 0
 
-print(f"answer to part1: {part1()}")
-print(f"answer to part2:")
-part2()
-    
+
+def main():
+    data = get_input(13, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
+
+
+if __name__ == '__main__':
+    main()
+

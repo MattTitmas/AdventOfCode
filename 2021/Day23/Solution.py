@@ -1,5 +1,9 @@
 from functools import lru_cache
 
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
 energyCost = {
     'A': 1,
     'B': 10,
@@ -88,8 +92,9 @@ def makeMove(hallway, rooms, totalEnergy=0):
     return minEnergy
 
 
-def part1():
-    values = [i.replace("#", "").replace(" ", "") for i in open("input.txt", "r").read().split("\n")[2:4]]
+@function_timer_avg
+def part1(data):
+    values = [i.replace("#", "").replace(" ", "") for i in data.split("\n")[2:4]]
     rooms = [[], [], [], []]
     hallway = ["."] * 11
     for i in range(4):
@@ -100,9 +105,16 @@ def part1():
     return (makeMove(tuple(hallway), roomTuple))
 
 
-def part2():
+@function_timer_avg
+def part2(data):
     return 0
 
 
-print(f"answer to part1: {part1()}")
-print(f"answer to part2: {part2()}")
+def main():
+    data = get_input(23, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
+
+
+if __name__ == '__main__':
+    main()

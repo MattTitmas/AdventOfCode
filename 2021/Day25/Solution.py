@@ -1,5 +1,10 @@
-def part1():
-    values = [list(i) for i in open("input.txt","r").read().split("\n")]
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
+@function_timer_avg
+def part1(data):
+    values = [list(i) for i in data.split("\n")]
     colLen = len(values)
     rowLen = len(values[0])
     prev = [["" for j in row] for row in values]
@@ -29,13 +34,14 @@ def part1():
             return count
         prev = [row[:] for row in values]
 
-
-
-    print(values)
+@function_timer_avg
+def part2(data):
     return 0
+def main():
+    data = get_input(25, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
 
-def part2():
-    commands = open("input.txt", "r").read().split("\n")
-    return 0
-print(f"answer to part1: {part1()}")
-print(f"answer to part2: {part2()}")
+
+if __name__ == '__main__':
+    main()

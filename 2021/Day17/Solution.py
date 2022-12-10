@@ -1,5 +1,10 @@
-def part1():
-    values = [[int(j) for j in i.split("=")[1].split("..")] for i in open("input.txt").read().split(": ")[1].split(", ")]
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
+@function_timer_avg
+def part1(data):
+    values = [[int(j) for j in i.split("=")[1].split("..")] for i in data.split(": ")[1].split(", ")]
     for i in range(len(values)):
         values[i] = list(range(values[i][0], values[i][1]+1))
 
@@ -27,8 +32,9 @@ def part1():
     return toReturn
 
 
-def part2():
-    values = [[int(j) for j in i.split("=")[1].split("..")] for i in open("input.txt").read().split(": ")[1].split(", ")]
+@function_timer_avg
+def part2(data):
+    values = [[int(j) for j in i.split("=")[1].split("..")] for i in data.split(": ")[1].split(", ")]
     for i in range(len(values)):
         values[i] = list(range(values[i][0], values[i][1]+1))
 
@@ -56,5 +62,11 @@ def part2():
 
 
 
-print(f"answer to part1: {part1()}")
-print(f"answer to part2: {part2()}")
+def main():
+    data = get_input(17, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
+
+
+if __name__ == '__main__':
+    main()

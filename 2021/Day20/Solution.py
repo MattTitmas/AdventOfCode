@@ -1,6 +1,11 @@
-def part1():
-    key = "".join(open("input.txt").read().split("\n\n")[0].split("\n"))
-    value = [list(i) for i in open("input.txt").read().split("\n\n")[1].split("\n")]
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
+@function_timer_avg
+def part1(data):
+    key = "".join(data.split("\n\n")[0].split("\n"))
+    value = [list(i) for i in data.split("\n\n")[1].split("\n")]
     lightPixels = set()
 
     for j in range(0, len(value)):
@@ -70,9 +75,10 @@ def part1():
     return len(lightPixels)
 
 
-def part2():
+@function_timer_avg
+def part2(data):
     pass
 
 
 print(f"answer to part1: {part1()}")
-# print(f"answer to part2: {part2()}")
+print(f"answer to part2: {part2()}")

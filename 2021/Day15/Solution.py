@@ -1,5 +1,10 @@
-def part1():
-    values = [[int(j) for j in list(i)] for i in open("input.txt").read().split("\n")]
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
+@function_timer_avg
+def part1(data):
+    values = [[int(j) for j in list(i)] for i in data.split("\n")]
 
     risk = [[float("inf") for i in range(len(values[0]))] for j in range(len(values))]
     risk[0][0] = 0
@@ -20,8 +25,9 @@ def part1():
     return risk[-1][-1]
 
 
-def part2():
-    values = [[int(j) for j in list(i)] for i in open("input.txt").read().split("\n")]
+@function_timer_avg
+def part2(data):
+    values = [[int(j) for j in list(i)] for i in data.split("\n")]
 
     for x in range(4):
         for i in range(0,len(values)):
@@ -50,6 +56,12 @@ def part2():
                                 risk[i][j] = value
                                 change = True
     return risk[-1][-1]
-print(f"answer to part1: {part1()}")
-print(f"answer to part2: {part2()}")
+def main():
+    data = get_input(15, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
+
+
+if __name__ == '__main__':
+    main()
     

@@ -1,10 +1,15 @@
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
 from collections import Counter
 from functools import lru_cache
 from itertools import product
 
 
-def part1():
-    positions = [int(i.split(": ")[1]) for i in open("input.txt").read().split("\n")]
+@function_timer_avg
+def part1(data):
+    positions = [int(i.split(": ")[1]) for i in data.split("\n")]
     scores = [0, 0]
     turn = 0
     rolls = 0
@@ -23,7 +28,7 @@ def part1():
 @lru_cache(maxsize=None)
 def part2(player1Position=-1, player2Position=-1, player1Score=0, player2Score=0):
     if player1Position == -1 or player2Position == -1:
-        positions = [int(i.split(": ")[1]) for i in open("input.txt").read().split("\n")]
+        positions = [int(i.split(": ")[1]) for i in data.split("\n")]
         player1Position = positions[0]
         player2Position = positions[1]
     if player1Score >= 21: return 1, 0

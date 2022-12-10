@@ -1,5 +1,10 @@
-def part1():
-    values = [[int(j) for j in i] for i in open("input.txt","r").read().split("\n")]
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
+@function_timer_avg
+def part1(data):
+    values = [[int(j) for j in i] for i in data.split("\n")]
 
     total = 0
     for steps in range(100):
@@ -30,8 +35,9 @@ def part1():
         
     return total
 
-def part2():
-    values = [[int(j) for j in i] for i in open("input.txt","r").read().split("\n")]
+@function_timer_avg
+def part2(data):
+    values = [[int(j) for j in i] for i in data.split("\n")]
 
     total = 0
     for steps in range(10000):
@@ -62,6 +68,12 @@ def part2():
         if total-totalBefore == 100:
             return steps+1
 
-print(f"answer to part1: {part1()}")
-print(f"answer to part2: {part2()}")
+def main():
+    data = get_input(11, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
+
+
+if __name__ == '__main__':
+    main()
     

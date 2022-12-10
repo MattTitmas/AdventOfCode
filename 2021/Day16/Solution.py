@@ -1,6 +1,11 @@
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
 import math
-def part1():
-    values = open("input.txt").read()
+@function_timer_avg
+def part1(data):
+    values = data
     binary = str(bin(int(values, 16)))[2:].zfill(len(values) * 4)
     def analyzePacket(packet: str):
         totalPacketNo = int(packet[0:3], 2)
@@ -45,8 +50,9 @@ def part1():
     return analyzePacket(binary)[1]
 
 
-def part2():
-    values = open("input.txt").read()
+@function_timer_avg
+def part2(data):
+    values = data
     binary = str(bin(int(values, 16)))[2:].zfill(len(values) * 4)
 
     def analyzePacket(packet: str):
@@ -101,5 +107,11 @@ def part2():
 
     return analyzePacket(binary)[1]
 
-print(f"answer to part1: {part1()}")
-print(f"answer to part2: {part2()}")
+def main():
+    data = get_input(16, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
+
+
+if __name__ == '__main__':
+    main()

@@ -1,6 +1,11 @@
-def part1():
-    code = open("input.txt").read().split("\n\n")[0]
-    keys = {i.split(" -> ")[0]:i.split(" -> ")[1] for i in open("input.txt").read().split("\n\n")[1].split("\n")}
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
+@function_timer_avg
+def part1(data):
+    code = data.split("\n\n")[0]
+    keys = {i.split(" -> ")[0]:i.split(" -> ")[1] for i in data.split("\n\n")[1].split("\n")}
     string = {}
 
     for i in range(0,len(code)-1):
@@ -24,9 +29,10 @@ def part1():
         occurences[key] //= 2
     return(max(occurences.values()) - min(occurences.values()))
 
-def part2():
-    code = open("input.txt").read().split("\n\n")[0]
-    keys = {i.split(" -> ")[0]:i.split(" -> ")[1] for i in open("input.txt").read().split("\n\n")[1].split("\n")}
+@function_timer_avg
+def part2(data):
+    code = data.split("\n\n")[0]
+    keys = {i.split(" -> ")[0]:i.split(" -> ")[1] for i in data.split("\n\n")[1].split("\n")}
     string = {}
 
     for i in range(0,len(code)-1):
@@ -49,6 +55,12 @@ def part2():
     for key in occurences.keys():
         occurences[key] //= 2
     return(max(occurences.values()) - min(occurences.values()))
-print(f"answer to part1: {part1()}")
-print(f"answer to part2: {part2()}")
+def main():
+    data = get_input(14, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
+
+
+if __name__ == '__main__':
+    main()
     

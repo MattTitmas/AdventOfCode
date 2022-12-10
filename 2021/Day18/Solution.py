@@ -1,3 +1,7 @@
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
 from itertools import permutations
 
 def snailfishAdd(num1: list, num2: list) -> list:
@@ -61,8 +65,9 @@ def getMag(num : str) -> int:
     right = int(right[-1]) if len(right) == 1 else getMag(right)
     return 3*left + 2*right
 
-def part1():
-    values = [list(i) for i in open("input.txt").read().split("\n")]
+@function_timer_avg
+def part1(data):
+    values = [list(i) for i in data.split("\n")]
     for i in range(len(values)):
         values[i] = list(filter(lambda a: a != ',', values[i]))
     result = values[0]
@@ -71,8 +76,9 @@ def part1():
     return getMag(" ".join(result))
 
 
-def part2():
-    values = [list(i) for i in open("input.txt").read().split("\n")]
+@function_timer_avg
+def part2(data):
+    values = [list(i) for i in data.split("\n")]
     for i in range(len(values)):
         values[i] = list(filter(lambda a: a != ',', values[i]))
     maxMag = -float("inf")
@@ -85,5 +91,11 @@ def part2():
 
 
 
-print(f"answer to part1: {part1()}")
-print(f"answer to part2: {part2()}")
+def main():
+    data = get_input(18, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
+
+
+if __name__ == '__main__':
+    main()

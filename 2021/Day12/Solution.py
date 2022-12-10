@@ -1,3 +1,7 @@
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
 def find_all_paths(graph, start, end, costs, path=[]):
         path = path + [start]
         if start == end:
@@ -15,8 +19,9 @@ def find_all_paths(graph, start, end, costs, path=[]):
         return paths 
 
 
-def part1():
-    values = [i.split("-") for i in open("input.txt","r").read().split("\n")]
+@function_timer_avg
+def part1(data):
+    values = [i.split("-") for i in data.split("\n")]
     graph = {}
     cost = {}
     for path in values:
@@ -33,8 +38,9 @@ def part1():
     cost['start'] = 0
     return len(find_all_paths(graph,'start','end', cost))
 
-def part2():
-    values = [i.split("-") for i in open("input.txt","r").read().split("\n")]
+@function_timer_avg
+def part2(data):
+    values = [i.split("-") for i in data.split("\n")]
     graph = {}
     cost = {}
     for path in values:
@@ -60,6 +66,12 @@ def part2():
             cost[key] = 1
     return len(paths)
 
-print(f"answer to part1: {part1()}")
-print(f"answer to part2: {part2()}")
+def main():
+    data = get_input(12, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
+
+
+if __name__ == '__main__':
+    main()
     

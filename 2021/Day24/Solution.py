@@ -1,7 +1,13 @@
-def part1():
-    commands = open("input.txt","r").read().split("\n")
+from aoc import get_input
+from utils import function_timer_avg, function_timer
+
+
+@function_timer_avg
+def part1(data):
+    commands = data.split("\n")
+
     def inputInstruction(modelNo, current):
-        return modelNo[current], current+1
+        return modelNo[current], current + 1
 
     instructions = {
         "inp": inputInstruction,
@@ -14,12 +20,13 @@ def part1():
 
     def reduce(model):
         model[-1] -= 1
-        for i in range(len(model)-1, 1, -1):
+        for i in range(len(model) - 1, 1, -1):
             if model[i] < 1:
                 model[i] = 9
-                model[i-1] -= 1
+                model[i - 1] -= 1
         return model
-    modelNo = [9,1,6,9,9,3,9,4,8,9,5,0,0,0]
+
+    modelNo = [9, 1, 6, 9, 9, 3, 9, 4, 8, 9, 5, 0, 0, 0]
     while True:
         currentNoInput = 0
         variables = {"w": 0, "x": 0, "y": 0, "z": 0}
@@ -40,8 +47,9 @@ def part1():
         modelNo = reduce(modelNo)
 
 
-def part2():
-    commands = open("input.txt", "r").read().split("\n")
+@function_timer_avg
+def part2(data):
+    commands = data.split("\n")
 
     def inputInstruction(modelNo, current):
         return modelNo[current], current + 1
@@ -57,13 +65,13 @@ def part2():
 
     def reduce(model):
         model[-1] += 1
-        for i in range(len(model)-1, 1, -1):
+        for i in range(len(model) - 1, 1, -1):
             if model[i] > 9:
                 model[i] = 1
                 model[i - 1] += 1
         return model
 
-    modelNo = [9,9,9,9,9,9,9,9,9,9,9,9,9,9]
+    modelNo = [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
     while True:
         currentNoInput = 0
         variables = {"w": 0, "x": 0, "y": 0, "z": 0}
@@ -78,9 +86,16 @@ def part2():
                 variables[storeLoc] = val
             else:
                 variables[storeLoc] = instruction(operands[0], operands[1])
-
         if variables["z"] == 0:
             return "".join([str(i) for i in modelNo])
         modelNo = reduce(modelNo)
-print(f"answer to part1: {part1()}") #91699394894995
-print(f"answer to part2: {part2()}") #51147191161261
+
+
+def main():
+    data = get_input(24, 2021)
+    print(f'Part 1: {part1(data)}')
+    print(f'Part 2: {part2(data)}')
+
+
+if __name__ == '__main__':
+    main()

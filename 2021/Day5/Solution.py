@@ -12,17 +12,18 @@ def part1(data):
             y = line[0][1]
             xChange = -1 if (line[1][0] - line[0][0]) < 0 else (1 if (line[1][0] - line[0][0] > 0) else 0)
             yChange = -1 if (line[1][1] - line[0][1]) < 0 else (1 if (line[1][1] - line[0][1] > 0) else 0)
-            points[(x,y)] = 1 if (x,y) not in points else points[(x,y)] + 1 
+            points[(x, y)] = 1 if (x, y) not in points else points[(x, y)] + 1
 
             while (x != line[1][0] or y != line[1][1]):
                 x += xChange
                 y += yChange
-                points[(x,y)] = 1 if (x,y) not in points else points[(x,y)] + 1
+                points[(x, y)] = 1 if (x, y) not in points else points[(x, y)] + 1
 
     total = 0
     for key, value in points.items():
-        total += (1 if value >= 2 else 0)             
+        total += (1 if value >= 2 else 0)
     return total
+
 
 @function_timer_avg
 def part2(data):
@@ -33,17 +34,18 @@ def part2(data):
         y = line[0][1]
         xChange = -1 if (line[1][0] - line[0][0]) < 0 else (1 if (line[1][0] - line[0][0] > 0) else 0)
         yChange = -1 if (line[1][1] - line[0][1]) < 0 else (1 if (line[1][1] - line[0][1] > 0) else 0)
-        points[(x,y)] = 1 if (x,y) not in points else points[(x,y)] + 1
+        points[(x, y)] = 1 if (x, y) not in points else points[(x, y)] + 1
 
         while (x != line[1][0] or y != line[1][1]):
             x += xChange
             y += yChange
-            points[(x,y)] = 1 if (x,y) not in points else points[(x,y)] + 1
+            points[(x, y)] = 1 if (x, y) not in points else points[(x, y)] + 1
 
     total = 0
     for key, value in points.items():
-        total += (1 if value >= 2 else 0)           
+        total += (1 if value >= 2 else 0)
     return total
+
 
 def main():
     data = get_input(5, 2021)

@@ -2,7 +2,7 @@
 Advent of Code Solutions
 </h1>
 <h2 align="center">
-  2022 - 18 ⭐
+  2022 - 20 ⭐
 </h2>
 <h3>
     Day 1
@@ -57,6 +57,12 @@ Part 2 - 0.011973314s
 </h3>
 Part 1 - 0.016367800s <br>
 Part 2 - 0.104240800s
+
+<h3>
+    Day 10
+</h3>
+Part 1 - 0.000400388s <br>
+Part 2 - 0.001116269s
 
 <h2 align="center">
   2017 - 46 ⭐

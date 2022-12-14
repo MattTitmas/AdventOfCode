@@ -95,7 +95,7 @@ Part 1 - 0.004504495s <br>
 Part 2 - 0.041736682s
 
 <h2 align="center">
-  2019 - 4 ⭐
+  2019 - 8 ⭐
 </h2>
 <h3>
     Day 1
@@ -110,10 +110,16 @@ Part 1 - 0.00002292s <br>
 Part 2 - 0.02426707s
 
 <h3>
-    Day 2
+    Day 3
 </h3>
 Part 1 - 0.07461230s <br>
 Part 2 - 0.09561929s
+
+<h3>
+    Day 4
+</h3>
+Part 1 - 0.01065207s <br>
+Part 2 - 0.01072408s
 
 <h2 align="center">
   2017 - 50 ⭐

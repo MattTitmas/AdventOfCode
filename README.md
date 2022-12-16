@@ -83,16 +83,16 @@ Part 1 - 0.001150300s <br>
 Part 2 - 0.002102000s
 
 <h3>
-    Day 13
+    Day 14
 </h3>
 Part 1 - 0.001809599s <br>
 Part 2 - 0.014830600s
 
 <h3>
-    Day 13
+    Day 15
 </h3>
-Part 1 - 0.004504495s <br>
-Part 2 - 0.041736682s
+Part 1 - 0.000196350s <br>
+Part 2 - 0.000234833s
 
 <h2 align="center">
   2019 - 8 ⭐

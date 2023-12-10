@@ -1,7 +1,7 @@
 import time
 
 
-class Timer():
+class Timer:
     def __init__(self, tag: str = "") -> None:
         self.tag = tag
 

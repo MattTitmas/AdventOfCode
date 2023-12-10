@@ -1,4 +1,4 @@
-class BaseDay():
+class BaseDay:
     def __init__(self, input_path):
         self.input_path = input_path
 

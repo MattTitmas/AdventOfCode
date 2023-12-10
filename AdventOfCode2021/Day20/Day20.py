@@ -18,9 +18,9 @@ def part1():
             minimumX = min(minimumX, i[1])
             minimumY = min(minimumY, i[0])
 
-        for i in range(minimumY, maximumY+1):
+        for i in range(minimumY, maximumY + 1):
             str = ""
-            for j in range(minimumX, maximumX+1):
+            for j in range(minimumX, maximumX + 1):
                 if (i, j) in lightPixels:
                     str += "1"
                 else:
@@ -40,7 +40,7 @@ def part1():
                             str += "1" if (y, x) in lightPixels else "0"
                     val = int(str, 2)
                     if key[val] == "#":
-                        copySet.add((yPos+i, xPos+j))
+                        copySet.add((yPos + i, xPos + j))
         print(counter)
 
         if counter % 1 == 0:
@@ -49,7 +49,7 @@ def part1():
 
         lightPixels = set(copySet)
 
-    '''
+    """
     maximumX, maximumY = -float("inf"), -float("inf")
     minimumX, minimumY = float("inf"), float("inf")
     for i in lightPixels:
@@ -66,7 +66,7 @@ def part1():
             else:
                 str += " "
         print(str)
-    '''
+    """
     return len(lightPixels)
 
 

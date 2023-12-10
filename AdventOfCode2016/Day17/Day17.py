@@ -1,13 +1,17 @@
 from hashlib import md5
 
+
 def part1(code):
-    openDoors = ["b","c","d","e","f"]
+    openDoors = ["b", "c", "d", "e", "f"]
+
     def getOpen(string):
         hash = md5(string.encode()).hexdigest()
-        movesMade = string[sum(1 for c in string if c.islower()):]
-        positionX, positionY = movesMade.count("R") - movesMade.count("L"), movesMade.count("D")-movesMade.count("U")
+        movesMade = string[sum(1 for c in string if c.islower()) :]
+        positionX, positionY = movesMade.count("R") - movesMade.count(
+            "L"
+        ), movesMade.count("D") - movesMade.count("U")
         toRet = []
-        for i in range(0,4):
+        for i in range(0, 4):
             toRet.append(hash[i] in openDoors)
         if positionX == 0:
             toRet[2] = False
@@ -20,9 +24,11 @@ def part1(code):
         return toRet
 
     def vault(string):
-        movesMade = string[sum(1 for c in string if c.islower()):]
-        positionX, positionY = movesMade.count("R") - movesMade.count("L"), movesMade.count("D") - movesMade.count("U")
-        return (positionX, positionY) == (3,3)
+        movesMade = string[sum(1 for c in string if c.islower()) :]
+        positionX, positionY = movesMade.count("R") - movesMade.count(
+            "L"
+        ), movesMade.count("D") - movesMade.count("U")
+        return (positionX, positionY) == (3, 3)
 
     queue = [code]
 
@@ -43,13 +49,16 @@ def part1(code):
 
 
 def part2(code):
-    openDoors = ["b","c","d","e","f"]
+    openDoors = ["b", "c", "d", "e", "f"]
+
     def getOpen(string):
         hash = md5(string.encode()).hexdigest()
-        movesMade = string[sum(1 for c in string if c.islower()):]
-        positionX, positionY = movesMade.count("R") - movesMade.count("L"), movesMade.count("D")-movesMade.count("U")
+        movesMade = string[sum(1 for c in string if c.islower()) :]
+        positionX, positionY = movesMade.count("R") - movesMade.count(
+            "L"
+        ), movesMade.count("D") - movesMade.count("U")
         toRet = []
-        for i in range(0,4):
+        for i in range(0, 4):
             toRet.append(hash[i] in openDoors)
         if positionX == 0:
             toRet[2] = False
@@ -62,12 +71,14 @@ def part2(code):
         return toRet
 
     def vault(string):
-        movesMade = string[sum(1 for c in string if c.islower()):]
-        positionX, positionY = movesMade.count("R") - movesMade.count("L"), movesMade.count("D") - movesMade.count("U")
-        return (positionX, positionY) == (3,3)
+        movesMade = string[sum(1 for c in string if c.islower()) :]
+        positionX, positionY = movesMade.count("R") - movesMade.count(
+            "L"
+        ), movesMade.count("D") - movesMade.count("U")
+        return (positionX, positionY) == (3, 3)
 
     if vault(code):
-        return len(code)-sum(1 for c in code if c.islower())
+        return len(code) - sum(1 for c in code if c.islower())
 
     moves = getOpen(code)
     val = 0
@@ -81,6 +92,7 @@ def part2(code):
         elif i == 3 and moves[i]:
             val = max(val, part2(code + "R"))
     return val
+
 
 print(f"Answer to part 1: {part1('pgflpeqp')}")
 print(f"Answer to part 2: {part2('pgflpeqp')}")

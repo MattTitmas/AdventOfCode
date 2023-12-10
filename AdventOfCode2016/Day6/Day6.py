@@ -1,9 +1,19 @@
 from collections import Counter
 
+
 def part1():
     values = open("input.txt").read().split("\n")
     code = ""
-    counters = [Counter(), Counter(), Counter(), Counter(), Counter(), Counter(), Counter(), Counter()]
+    counters = [
+        Counter(),
+        Counter(),
+        Counter(),
+        Counter(),
+        Counter(),
+        Counter(),
+        Counter(),
+        Counter(),
+    ]
     for word in values:
         for count, char in enumerate(word):
             counters[count][char] += 1
@@ -15,7 +25,16 @@ def part1():
 def part2():
     values = open("input.txt").read().split("\n")
     code = ""
-    counters = [Counter(), Counter(), Counter(), Counter(), Counter(), Counter(), Counter(), Counter()]
+    counters = [
+        Counter(),
+        Counter(),
+        Counter(),
+        Counter(),
+        Counter(),
+        Counter(),
+        Counter(),
+        Counter(),
+    ]
     for word in values:
         for count, char in enumerate(word):
             counters[count][char] += 1

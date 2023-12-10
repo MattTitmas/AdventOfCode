@@ -1,24 +1,31 @@
 from hashlib import md5
 
+
 def part1():
     values = open("input.txt").read()
     values = "abc"
     current = 0
     keys = []
     while len(keys) != 64:
-        result = md5((values+str(current)).encode()).hexdigest()
+        result = md5((values + str(current)).encode()).hexdigest()
         triple = False
-        for i in range(0, len(result)-2):
-            if result[i] == result[i+1] and result[i] == result[i+2]:
+        for i in range(0, len(result) - 2):
+            if result[i] == result[i + 1] and result[i] == result[i + 2]:
                 triple = True
                 letter = result[i]
                 break
         if triple:
-            for i in range(current+1, current+1001):
+            for i in range(current + 1, current + 1001):
                 result = md5((values + str(i)).encode()).hexdigest()
                 quintuple = False
                 for j in range(0, len(result) - 4):
-                    if result[j] == letter and result[j] == result[j + 1] and result[j] == result[j + 2] and result[j] == result[j + 3] and result[j] == result[j + 4]:
+                    if (
+                        result[j] == letter
+                        and result[j] == result[j + 1]
+                        and result[j] == result[j + 2]
+                        and result[j] == result[j + 3]
+                        and result[j] == result[j + 4]
+                    ):
                         quintuple = True
                         break
                 if quintuple:
@@ -34,8 +41,8 @@ def part2():
     oldLength = 0
     keys = []
     md5Hashes = []
-    for key in range(0,1001):
-        result = values+str(key)
+    for key in range(0, 1001):
+        result = values + str(key)
         for i in range(2017):
             result = md5(result.encode()).hexdigest()
         md5Hashes.append(result)
@@ -43,8 +50,11 @@ def part2():
     while len(keys) != 64:
         currentMD5 = md5Hashes.pop(0)
         triple = False
-        for i in range(0, len(currentMD5)-2):
-            if currentMD5[i] == currentMD5[i+1] and currentMD5[i] == currentMD5[i+2]:
+        for i in range(0, len(currentMD5) - 2):
+            if (
+                currentMD5[i] == currentMD5[i + 1]
+                and currentMD5[i] == currentMD5[i + 2]
+            ):
                 triple = True
                 letter = currentMD5[i]
                 break
@@ -53,19 +63,24 @@ def part2():
                 result = md5Hashes[i]
                 quintuple = False
                 for j in range(0, len(result) - 4):
-                    if result[j] == letter and result[j] == result[j + 1] and result[j] == result[j + 2] and result[j] == result[j + 3] and result[j] == result[j + 4]:
+                    if (
+                        result[j] == letter
+                        and result[j] == result[j + 1]
+                        and result[j] == result[j + 2]
+                        and result[j] == result[j + 3]
+                        and result[j] == result[j + 4]
+                    ):
                         quintuple = True
                         break
                 if quintuple:
-                    keys.append(current-1001)
+                    keys.append(current - 1001)
                     break
-        result = values+str(current)
+        result = values + str(current)
         for i in range(2017):
             result = md5(result.encode()).hexdigest()
         md5Hashes.append(result)
         current += 1
     return keys[-1]
-
 
 
 print(f"Answer to part 1: {part1()}")

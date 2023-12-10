@@ -8,7 +8,9 @@ class Day2(BaseDay):
     @property
     def part1(self):
         with open(self.input_path) as file:
-            spreadsheet = [[int(j) for j in i.split("\t")] for i in file.read().split("\n")]
+            spreadsheet = [
+                [int(j) for j in i.split("\t")] for i in file.read().split("\n")
+            ]
         total = 0
         for line in spreadsheet:
             total += max(line) - min(line)
@@ -17,7 +19,9 @@ class Day2(BaseDay):
     @property
     def part2(self):
         with open(self.input_path) as file:
-            spreadsheet = [[int(j) for j in i.split("\t")] for i in file.read().split("\n")]
+            spreadsheet = [
+                [int(j) for j in i.split("\t")] for i in file.read().split("\n")
+            ]
         total = 0
         for line in spreadsheet:
             for i, val1 in enumerate(line):

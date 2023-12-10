@@ -26,29 +26,33 @@ keyPad2 = {
     (-1, 1): "A",
     (0, 1): "B",
     (1, 1): "C",
-    (0, 2): "D"
+    (0, 2): "D",
 }
+
+
 def part1():
-    values = open("input.txt","r").read().split("\n")
-    xPos = 1; yPos = 1
+    values = open("input.txt", "r").read().split("\n")
+    xPos = 1
+    yPos = 1
     toRet = ""
     for i in values:
         for j in i:
             if j == "L":
-                xPos = max(xPos-1, 0)
+                xPos = max(xPos - 1, 0)
             elif j == "R":
-                xPos = min(2, xPos+1)
+                xPos = min(2, xPos + 1)
             elif j == "U":
-                yPos = max(yPos-1, 0)
+                yPos = max(yPos - 1, 0)
             else:
-                yPos = min(2, yPos+1)
+                yPos = min(2, yPos + 1)
         toRet += str(keyPad1[(xPos, yPos)])
     return toRet
 
 
 def part2():
     values = open("input.txt", "r").read().split("\n")
-    xPos = -2; yPos = 0
+    xPos = -2
+    yPos = 0
     toRet = ""
     for i in values:
         for j in i:

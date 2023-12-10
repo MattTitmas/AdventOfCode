@@ -1,4 +1,4 @@
-sensorData = open('input.txt').read().splitlines()
+sensorData = open("input.txt").read().splitlines()
 
 diff = [-1, 0, 1]
 
@@ -10,7 +10,7 @@ for line in sensorData:
         key = line
     elif len(line) > 0:
         for x in range(len(line)):
-            if line[x] == '#':
+            if line[x] == "#":
                 trenchMap.add((x, y))
         y += 1
 
@@ -25,24 +25,24 @@ print(len(key))
 
 
 def oneStep(trenchMap, neighboorhood, itr=0):
-    itrKey = {'#': '1', '.': '0'}
-    pointToSave = '#'
-    if key[0] == '#' and key[-1] == '.':
+    itrKey = {"#": "1", ".": "0"}
+    pointToSave = "#"
+    if key[0] == "#" and key[-1] == ".":
         if itr > 0 and (itr % 2) == 0:
-            itrKey = {'#': '0', '.': '1'}
+            itrKey = {"#": "0", ".": "1"}
         else:
-            pointToSave = '.'
+            pointToSave = "."
     newTrenchMap = set()
     newNeighboorhood = set()
     for point in neighboorhood:
-        number = ''
+        number = ""
         x, y = point
         for dy in diff:
             for dx in diff:
                 if (x + dx, y + dy) in trenchMap:
-                    number += itrKey['#']
+                    number += itrKey["#"]
                 else:
-                    number += itrKey['.']
+                    number += itrKey["."]
         if key[int(number, 2)] == pointToSave:
             newTrenchMap.add(point)
             for dy in diff:
@@ -70,11 +70,11 @@ def printMap(trenchMap):
     for y in range(minY, maxY + 1):
         for x in range(minX, maxX + 1):
             if (x, y) in trenchMap:
-                print('#', end='')
+                print("#", end="")
             else:
-                print('.', end='')
-        print('')
-    print('')
+                print(".", end="")
+        print("")
+    print("")
 
 
 for i in range(50):

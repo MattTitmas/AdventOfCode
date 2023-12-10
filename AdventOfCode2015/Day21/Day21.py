@@ -1,12 +1,6 @@
 import itertools
 
-weapons = {
-    (8, 4, 0),
-    (10, 5, 0),
-    (25, 6, 0),
-    (40, 7, 0),
-    (74, 8, 0)
-}
+weapons = {(8, 4, 0), (10, 5, 0), (25, 6, 0), (40, 7, 0), (74, 8, 0)}
 
 armor = {
     (0, 0, 0),
@@ -28,6 +22,7 @@ rings = {
     (80, 0, 3),
 }
 
+
 def do_fight(player):
     boss = [103, 9, 2]
     while True:
@@ -38,11 +33,18 @@ def do_fight(player):
         if player[0] <= 0:
             return False
 
+
 wins = []
 for weapon_cost, weapon_damage, _ in weapons:
     for armor_cost, _, armor_armor in armor:
         for ring1, ring2 in itertools.combinations(rings, 2):
-            if do_fight([100, weapon_damage + ring1[1] + ring2[1], armor_armor + ring1[2] + ring2[2]]):
+            if do_fight(
+                [
+                    100,
+                    weapon_damage + ring1[1] + ring2[1],
+                    armor_armor + ring1[2] + ring2[2],
+                ]
+            ):
                 wins.append(weapon_cost + armor_cost + ring1[0] + ring2[0])
 print(min(wins))
 
@@ -50,6 +52,12 @@ wins = []
 for weapon_cost, weapon_damage, _ in weapons:
     for armor_cost, _, armor_armor in armor:
         for ring1, ring2 in itertools.combinations(rings, 2):
-            if not do_fight([100, weapon_damage + ring1[1] + ring2[1], armor_armor + ring1[2] + ring2[2]]):
+            if not do_fight(
+                [
+                    100,
+                    weapon_damage + ring1[1] + ring2[1],
+                    armor_armor + ring1[2] + ring2[2],
+                ]
+            ):
                 wins.append(weapon_cost + armor_cost + ring1[0] + ring2[0])
 print(max(wins))

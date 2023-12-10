@@ -1,5 +1,8 @@
 def part1():
-    values = [[int(j) for j in i.split() if j.isnumeric()]for i in open("input.txt","r").read().split("\n")]
+    values = [
+        [int(j) for j in i.split() if j.isnumeric()]
+        for i in open("input.txt", "r").read().split("\n")
+    ]
     toRet = 0
     for i in values:
         i.sort()
@@ -9,14 +12,17 @@ def part1():
 
 
 def part2():
-    values = [[int(j) for j in i.split() if j.isnumeric()] for i in open("input.txt", "r").read().split("\n")]
+    values = [
+        [int(j) for j in i.split() if j.isnumeric()]
+        for i in open("input.txt", "r").read().split("\n")
+    ]
     toRet = 0
-    for i in range(0, len(values)-2, 3):
+    for i in range(0, len(values) - 2, 3):
         sizes0 = []
         sizes1 = []
         sizes2 = []
         for j in range(0, 3):
-            sizes0.append(values[i+j][0])
+            sizes0.append(values[i + j][0])
             sizes1.append(values[i + j][1])
             sizes2.append(values[i + j][2])
         sizes0.sort()

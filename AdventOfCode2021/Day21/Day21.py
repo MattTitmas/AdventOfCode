@@ -10,8 +10,11 @@ def part1():
     rolls = 0
     currentRoll = 1
     while scores[0] < 1000 and scores[1] < 1000:
-        nextRolls = [currentRoll, 100 if (currentRoll + 1) % 100 == 0 else (currentRoll + 1) % 100,
-                     100 if (currentRoll + 2) % 100 == 0 else (currentRoll + 2) % 100]
+        nextRolls = [
+            currentRoll,
+            100 if (currentRoll + 1) % 100 == 0 else (currentRoll + 1) % 100,
+            100 if (currentRoll + 2) % 100 == 0 else (currentRoll + 2) % 100,
+        ]
         rolls += 3
         currentRoll = 100 if (currentRoll + 3) % 100 == 0 else (currentRoll + 3) % 100
         positions[turn] = (((positions[turn] + sum(nextRolls)) - 1) % 10) + 1
@@ -23,11 +26,15 @@ def part1():
 @lru_cache(maxsize=None)
 def part2(player1Position=-1, player2Position=-1, player1Score=0, player2Score=0):
     if player1Position == -1 or player2Position == -1:
-        positions = [int(i.split(": ")[1]) for i in open("input.txt").read().split("\n")]
+        positions = [
+            int(i.split(": ")[1]) for i in open("input.txt").read().split("\n")
+        ]
         player1Position = positions[0]
         player2Position = positions[1]
-    if player1Score >= 21: return 1, 0
-    if player2Score >= 21: return 0, 1
+    if player1Score >= 21:
+        return 1, 0
+    if player2Score >= 21:
+        return 0, 1
     result = [0, 0]
     for roll, freq in dice_freq.items():
         position = ((player1Position + roll - 1) % 10) + 1

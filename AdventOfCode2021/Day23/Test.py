@@ -3,8 +3,18 @@ from functools import lru_cache
 rooms_main = (("C", "C"), ("B", "D"), ("A", "A"), ("D", "B"))
 rooms_example = (("B", "A"), ("C", "D"), ("B", "C"), ("D", "A"))
 
-rooms_main2 = (("C", "D", "D", "C"), ("B", "C", "B", "D"), ("A", "B", "A", "A"), ("D", "A", "C", "B"))
-rooms_example2 = (("B", "D", "D", "A"), ("C", "C", "B", "D"), ("B", "B", "A", "C"), ("D", "A", "C", "A"))
+rooms_main2 = (
+    ("C", "D", "D", "C"),
+    ("B", "C", "B", "D"),
+    ("A", "B", "A", "A"),
+    ("D", "A", "C", "B"),
+)
+rooms_example2 = (
+    ("B", "D", "D", "A"),
+    ("C", "C", "B", "D"),
+    ("B", "B", "A", "C"),
+    ("D", "A", "C", "A"),
+)
 
 
 def main():
@@ -27,10 +37,15 @@ def f(lines):
 
     @lru_cache(maxsize=None)
     def helper(hallway, rooms):
-        if rooms == (("A",) * room_size, ("B",) * room_size, ("C",) * room_size, ("D",) * room_size):
+        if rooms == (
+            ("A",) * room_size,
+            ("B",) * room_size,
+            ("C",) * room_size,
+            ("D",) * room_size,
+        ):
             return 0
 
-        best_cost = float('inf')
+        best_cost = float("inf")
         for i, square in enumerate(hallway):  # Move from the hallway into a room.
             if square is None:
                 continue
@@ -51,11 +66,15 @@ def f(lines):
             if not can_move:
                 continue
             none_count = sum(elem is None for elem in rooms[dest])
-            new_room = (None,) * (none_count - 1) + (square,) * (room_size - none_count + 1)
+            new_room = (None,) * (none_count - 1) + (square,) * (
+                room_size - none_count + 1
+            )
             steps = none_count + abs(i - room_map[dest])
             cost = steps * costs[square]
-            helper_result = helper(hallway[:i] + (None,) + hallway[i + 1:], rooms[:dest] + (new_room,)
-                                   + rooms[dest + 1:])
+            helper_result = helper(
+                hallway[:i] + (None,) + hallway[i + 1 :],
+                rooms[:dest] + (new_room,) + rooms[dest + 1 :],
+            )
             new_cost = cost + helper_result
             if new_cost < best_cost:
                 best_cost = new_cost
@@ -73,16 +92,22 @@ def f(lines):
                 destination_steps = steps + abs(hall_destination - room_map[i])
                 destination_cost = destination_steps * costs[square]
                 blocked = False
-                for j in range(min(hall_destination, room_map[i]), max(hall_destination, room_map[i])+1):
+                for j in range(
+                    min(hall_destination, room_map[i]),
+                    max(hall_destination, room_map[i]) + 1,
+                ):
                     if hallway[j] is not None:
                         blocked = True
                         break
                 if blocked:
                     continue
-                new_room = (None,) * (none_count + 1) + room[none_count + 1:]
+                new_room = (None,) * (none_count + 1) + room[none_count + 1 :]
                 helper_result = helper(
-                    hallway[:hall_destination] + (square,) + hallway[hall_destination + 1:],
-                    rooms[:i] + (new_room,) + rooms[i + 1:])
+                    hallway[:hall_destination]
+                    + (square,)
+                    + hallway[hall_destination + 1 :],
+                    rooms[:i] + (new_room,) + rooms[i + 1 :],
+                )
                 new_cost = destination_cost + helper_result
                 if new_cost < best_cost:
                     best_cost = new_cost

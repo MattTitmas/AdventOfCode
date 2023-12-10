@@ -1,5 +1,5 @@
 def part1():
-    file = open("input.txt","r").read()
+    file = open("input.txt", "r").read()
     pointer = 0
     weight = 0
     while pointer < len(file):
@@ -16,7 +16,7 @@ def part1():
                 else:
                     duplicate += file[pointer]
                 pointer += 1
-            weight += int(amount)*int(duplicate)
+            weight += int(amount) * int(duplicate)
             pointer += int(amount)
         else:
             weight += 1
@@ -25,8 +25,8 @@ def part1():
 
 
 def part2():
-    file = open("input.txt","r").read()
-    weights = [1]*len(file)
+    file = open("input.txt", "r").read()
+    weights = [1] * len(file)
     weight = 0
     pointer = 0
     while pointer < len(file):
@@ -43,8 +43,8 @@ def part2():
                 else:
                     duplicate += file[pointer]
                 pointer += 1
-            for j in range(1,int(amount)+1):
-                weights[pointer+j] *= int(duplicate)
+            for j in range(1, int(amount) + 1):
+                weights[pointer + j] *= int(duplicate)
         else:
             weight += weights[pointer]
         pointer += 1

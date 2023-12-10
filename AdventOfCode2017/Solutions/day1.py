@@ -11,7 +11,7 @@ class Day1(BaseDay):
             numbers = [int(i) for i in list(file.read())]
         total = 0
         for i, value in enumerate(numbers):
-            if value == numbers[(i+1) % len(numbers)]:
+            if value == numbers[(i + 1) % len(numbers)]:
                 total += value
         return total
 
@@ -19,9 +19,9 @@ class Day1(BaseDay):
     def part2(self):
         with open(self.input_path) as file:
             numbers = [int(i) for i in list(file.read())]
-        jump = int(len(numbers)/2)
+        jump = int(len(numbers) / 2)
         total = 0
         for i, value in enumerate(numbers):
-            if value == numbers[(i+jump) % len(numbers)]:
+            if value == numbers[(i + jump) % len(numbers)]:
                 total += value
         return total

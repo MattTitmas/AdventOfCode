@@ -32,6 +32,10 @@ class Day5(BaseDay):
                 newPos = currentPos + jumps[currentPos]
             except IndexError:
                 return count
-            jumps[currentPos] = jumps[currentPos] - 1 if jumps[currentPos] >= 3 else jumps[currentPos] + 1
+            jumps[currentPos] = (
+                jumps[currentPos] - 1
+                if jumps[currentPos] >= 3
+                else jumps[currentPos] + 1
+            )
             currentPos = newPos
             count += 1

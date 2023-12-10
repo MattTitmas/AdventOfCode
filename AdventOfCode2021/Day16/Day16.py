@@ -1,7 +1,10 @@
 import math
+
+
 def part1():
     values = open("input.txt").read()
     binary = str(bin(int(values, 16)))[2:].zfill(len(values) * 4)
+
     def analyzePacket(packet: str):
         totalPacketNo = int(packet[0:3], 2)
         typeID = int(packet[3:6], 2)
@@ -35,8 +38,8 @@ def part1():
             currentBit = 6
             totalBin = ""
             while not stop:
-                val = packet[currentBit:currentBit + 5]
-                stop = (True if val[0] == '0' else False)
+                val = packet[currentBit : currentBit + 5]
+                stop = True if val[0] == "0" else False
                 totalBin += val[1:5]
                 currentBit += 5
             return 6 + len(totalBin) + len(totalBin) // 4, totalPacketNo
@@ -57,7 +60,7 @@ def part2():
             3: max,
             5: (lambda vals: 1 if vals[0] > vals[1] else 0),
             6: (lambda vals: 1 if vals[0] < vals[1] else 0),
-            7: (lambda vals: 1 if vals[0] == vals[1] else 0)
+            7: (lambda vals: 1 if vals[0] == vals[1] else 0),
         }
         totalValue = []
         typeID = int(packet[3:6], 2)
@@ -91,8 +94,8 @@ def part2():
             currentBit = 6
             totalBin = ""
             while not stop:
-                val = packet[currentBit:currentBit + 5]
-                stop = (True if val[0] == '0' else False)
+                val = packet[currentBit : currentBit + 5]
+                stop = True if val[0] == "0" else False
                 totalBin += val[1:5]
                 currentBit += 5
             return 6 + len(totalBin) + len(totalBin) // 4, int(totalBin, 2)
@@ -100,6 +103,7 @@ def part2():
         return totalLength, valueToReturn
 
     return analyzePacket(binary)[1]
+
 
 print(f"answer to part1: {part1()}")
 print(f"answer to part2: {part2()}")

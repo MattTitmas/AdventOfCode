@@ -1,17 +1,7 @@
 from functools import lru_cache
 
-energyCost = {
-    'A': 1,
-    'B': 10,
-    'C': 100,
-    'D': 1000
-}
-wantedHallways = {
-    'A': 0,
-    'B': 1,
-    'C': 2,
-    'D': 3
-}
+energyCost = {"A": 1, "B": 10, "C": 100, "D": 1000}
+wantedHallways = {"A": 0, "B": 1, "C": 2, "D": 3}
 
 sizeOfRooms = 2
 
@@ -26,9 +16,13 @@ def makeMove(hallway, rooms, totalEnergy=0):
     print(totalEnergy)
     print("\n")
 
-    if [["A"] * sizeOfRooms, ["B"] * sizeOfRooms, ["C"] * sizeOfRooms, ["D"] * sizeOfRooms] == rooms:
+    if [
+        ["A"] * sizeOfRooms,
+        ["B"] * sizeOfRooms,
+        ["C"] * sizeOfRooms,
+        ["D"] * sizeOfRooms,
+    ] == rooms:
         return totalEnergy
-
 
     minEnergy = float("inf")
     # Move from hallway to room (if possible)
@@ -36,14 +30,21 @@ def makeMove(hallway, rooms, totalEnergy=0):
         if hallway[i] != "." and hallway[i] != "u":
             val = hallway[i]
             wanted = wantedHallways[val]
-            wantedInHallway = 2+(2*wanted)+1
-            posOrNeg = (-1 if i > wantedInHallway else 1)
-            blocked = not all(hallway[j] == "." or hallway[j] == "u" for j in range(i+posOrNeg, wantedInHallway+posOrNeg, posOrNeg))
+            wantedInHallway = 2 + (2 * wanted) + 1
+            posOrNeg = -1 if i > wantedInHallway else 1
+            blocked = not all(
+                hallway[j] == "." or hallway[j] == "u"
+                for j in range(i + posOrNeg, wantedInHallway + posOrNeg, posOrNeg)
+            )
             roomForAmph = all(val == x for x in rooms[wanted])
             if not blocked and roomForAmph:
                 rooms[wanted].append(val)
                 hallway[i] = "."
-                energyForThisMove = (abs(i-wantedInHallway)+1 + (sizeOfRooms-len(rooms[wanted])+1)) * energyCost[val]
+                energyForThisMove = (
+                    abs(i - wantedInHallway)
+                    + 1
+                    + (sizeOfRooms - len(rooms[wanted]) + 1)
+                ) * energyCost[val]
                 totalEnergy += energyForThisMove
                 roomTuple = tuple(tuple(i) for i in rooms)
                 energyOfThisPath = makeMove(tuple(hallway), roomTuple, totalEnergy)
@@ -51,7 +52,6 @@ def makeMove(hallway, rooms, totalEnergy=0):
                 hallway[i] = val
                 rooms[wanted].pop()
                 totalEnergy -= energyForThisMove
-
 
     # Move from rooms to hallway
     for i in range(len(rooms)):
@@ -77,7 +77,9 @@ def makeMove(hallway, rooms, totalEnergy=0):
 
                 for j in possibleMovesInHallway:
                     hallway[j] = val
-                    energyForThisMove = (movesToReachHallway + abs((2 + (2 * i) - j))) * energyCost[val]
+                    energyForThisMove = (
+                        movesToReachHallway + abs((2 + (2 * i) - j))
+                    ) * energyCost[val]
                     totalEnergy += energyForThisMove
                     roomTuple = tuple(tuple(i) for i in rooms)
                     energyOfThisPath = makeMove(tuple(hallway), roomTuple, totalEnergy)
@@ -89,15 +91,18 @@ def makeMove(hallway, rooms, totalEnergy=0):
 
 
 def part1():
-    values = [i.replace("#", "").replace(" ", "") for i in open("input.txt", "r").read().split("\n")[2:4]]
+    values = [
+        i.replace("#", "").replace(" ", "")
+        for i in open("input.txt", "r").read().split("\n")[2:4]
+    ]
     rooms = [[], [], [], []]
     hallway = ["."] * 11
     for i in range(4):
-        hallway[2 + (2 * i)] = 'u'
+        hallway[2 + (2 * i)] = "u"
         rooms[i].append(values[1][i])
         rooms[i].append(values[0][i])
     roomTuple = tuple(tuple(i) for i in rooms)
-    return (makeMove(tuple(hallway), roomTuple))
+    return makeMove(tuple(hallway), roomTuple)
 
 
 def part2():

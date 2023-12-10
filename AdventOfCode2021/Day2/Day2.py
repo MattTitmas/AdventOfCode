@@ -1,5 +1,8 @@
 def part1():
-    values = [[int(i) if i.isnumeric() else i for i in i.split(" ")] for i in open("input.txt","r").read().split("\n")]
+    values = [
+        [int(i) if i.isnumeric() else i for i in i.split(" ")]
+        for i in open("input.txt", "r").read().split("\n")
+    ]
 
     depth = 0
     horizontal = 0
@@ -11,10 +14,14 @@ def part1():
         elif i[0] == "forward":
             horizontal += i[1]
 
-    return depth*horizontal
+    return depth * horizontal
+
 
 def part2():
-    values = [[int(i) if i.isnumeric() else i for i in i.split(" ")] for i in open("input.txt","r").read().split("\n")]
+    values = [
+        [int(i) if i.isnumeric() else i for i in i.split(" ")]
+        for i in open("input.txt", "r").read().split("\n")
+    ]
 
     aim = 0
     depth = 0
@@ -28,12 +35,10 @@ def part2():
             horizontal += i[1]
             depth += aim * i[1]
 
-    return depth*horizontal
-
+    return depth * horizontal
 
     return total
 
 
 print(f"answer to part1: {part1()}")
 print(f"answer to part2: {part2()}")
-

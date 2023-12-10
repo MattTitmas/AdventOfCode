@@ -10,6 +10,7 @@ class Day7(BaseDay):
     def part1(self):
         # return "tknk"
         return "gmcrj"
+
     # Done with ctrl - f in the input
 
     def depth(self, tree, start_node):
@@ -46,7 +47,7 @@ class Day7(BaseDay):
         values = []
         children = []
         previous_good_cost = 0
-        previous_bad_cost  = 0
+        previous_bad_cost = 0
         root_weight = 0
         while True:
             for i in tree[root_node]:

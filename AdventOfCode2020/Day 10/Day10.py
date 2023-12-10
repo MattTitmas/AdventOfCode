@@ -8,16 +8,17 @@ def part1():
     while len(Input) != 0:
         Smallest = float("inf")
         for x in Input:
-            Smallest = min(Smallest, x-Start)
+            Smallest = min(Smallest, x - Start)
         if Smallest not in Jumps:
             Jumps[Smallest] = 1
         else:
             Jumps[Smallest] += 1
-        Input.remove(Start+Smallest)
-        Start = Start+Smallest
+        Input.remove(Start + Smallest)
+        Start = Start + Smallest
 
     Jumps[3] += 1
     return Jumps[1] * Jumps[3]
+
 
 def part2():
     pass

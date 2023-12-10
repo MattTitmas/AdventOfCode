@@ -1,5 +1,5 @@
 def part1():
-    code = open("input.txt","r").read()
+    code = open("input.txt", "r").read()
     wantedLength = 272
     while len(code) < wantedLength:
         a = code
@@ -9,12 +9,14 @@ def part1():
     chunkSize = 16
     checkSum = ""
     for i in range(0, len(code), chunkSize):
-        checkSum += "1" if sum(int(i) for i in list(code[i:i+chunkSize])) % 2 == 0 else "0"
+        checkSum += (
+            "1" if sum(int(i) for i in list(code[i : i + chunkSize])) % 2 == 0 else "0"
+        )
     return checkSum
 
 
 def part2():
-    code = open("input.txt","r").read()
+    code = open("input.txt", "r").read()
     wantedLength = 35651584
     while len(code) < wantedLength:
         a = code
@@ -24,9 +26,10 @@ def part2():
     chunkSize = 2097152
     checkSum = ""
     for i in range(0, len(code), chunkSize):
-        checkSum += "1" if sum(int(i) for i in list(code[i:i+chunkSize])) % 2 == 0 else "0"
+        checkSum += (
+            "1" if sum(int(i) for i in list(code[i : i + chunkSize])) % 2 == 0 else "0"
+        )
     return checkSum
-
 
 
 print(f"Answer to part 1: {part1()}")

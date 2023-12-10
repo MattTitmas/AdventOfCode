@@ -1,7 +1,8 @@
 import math
 
+
 def part1():
-    values = open("input.txt","r").read().split(", ")
+    values = open("input.txt", "r").read().split(", ")
     degrees = 0
     xPosition, yPosition = 0, 0
     for command in values:
@@ -15,9 +16,8 @@ def part1():
     return abs(xPosition) + abs(yPosition)
 
 
-
 def part2():
-    values = open("input.txt","r").read().split(", ")
+    values = open("input.txt", "r").read().split(", ")
     degrees = 0
     xPosition, yPosition = 0, 0
     visitedPositions = set()

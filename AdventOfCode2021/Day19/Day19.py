@@ -21,13 +21,15 @@ class Scanner:
                 if i == j:
                     continue
                 p2 = self.points[j]
-                dist = math.sqrt((p2[0] - p1[0]) ** 2 + (p2[1] - p1[1]) ** 2 + (p2[2] - p1[2]) ** 2)
+                dist = math.sqrt(
+                    (p2[0] - p1[0]) ** 2 + (p2[1] - p1[1]) ** 2 + (p2[2] - p1[2]) ** 2
+                )
                 distances.append(dist)
 
             distances.sort()
             self.distances.append(distances)
 
-    def find_overlapping(self, other: 'Scanner'):
+    def find_overlapping(self, other: "Scanner"):
         common_points = {}
         for i in range(len(self.distances)):
             for j in range(len(other.distances)):
@@ -54,7 +56,6 @@ class Scanner:
         for i in range(3):
             # i - axis rotation
             for j in [1, -1]:
-
                 _offset_x = []
                 _offset_y = []
                 _offset_z = []
@@ -93,8 +94,7 @@ class Scanner:
         return True
 
     def align_points(self):
-        """Function that aligns the offset with the root scanner.
-        """
+        """Function that aligns the offset with the root scanner."""
         for i in range(len(self.points)):
             x, y, z = self.axis_map
             sx, sy, sz = self.axis_sign
@@ -110,11 +110,11 @@ class Scanner:
 
 scanners = []
 file = "input.txt"
-with open(file, 'r') as f:
+with open(file, "r") as f:
     current = None
     _c = 0
     for line in f:
-        if line.startswith('---'):
+        if line.startswith("---"):
             if current:
                 current.points = points
                 current.calculate_distances()
@@ -126,7 +126,7 @@ with open(file, 'r') as f:
         if not line.strip():
             continue
 
-        points.append([int(_) for _ in line.split(',')])
+        points.append([int(_) for _ in line.split(",")])
 
     current.points = points
     current.calculate_distances()
@@ -167,8 +167,15 @@ for i in range(len(processed)):
         s1 = processed[i]
         s2 = processed[j]
 
-        dist = abs(s1.offset[0] - s2.offset[0]) + abs(s1.offset[1] - s2.offset[1]) + abs(s1.offset[2] - s2.offset[2])
+        dist = (
+            abs(s1.offset[0] - s2.offset[0])
+            + abs(s1.offset[1] - s2.offset[1])
+            + abs(s1.offset[2] - s2.offset[2])
+        )
 
         if dist > max_distance_between_2scanners:
             max_distance_between_2scanners = dist
-print("Part 2. Max manhattan distance between two scanners: ", max_distance_between_2scanners)
+print(
+    "Part 2. Max manhattan distance between two scanners: ",
+    max_distance_between_2scanners,
+)

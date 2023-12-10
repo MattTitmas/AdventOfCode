@@ -1,7 +1,8 @@
 from time import time
 
+
 def part1():
-    traps = [i == "." for i in list(open("input.txt","r").read())]
+    traps = [i == "." for i in list(open("input.txt", "r").read())]
     total = 0
     for _ in range(40):
         total += sum(traps)
@@ -13,8 +14,9 @@ def part1():
         traps = newLine
     return total
 
+
 def part2():
-    traps = [i == "." for i in list(open("input.txt","r").read())]
+    traps = [i == "." for i in list(open("input.txt", "r").read())]
     total = 0
     for _ in range(400000):
         total += sum(traps)
@@ -26,11 +28,12 @@ def part2():
         traps = newLine
     return total
 
+
 start = time()
 print(f"Answer to part 1: {part1()}")
 end = time()
-print(end-start)
+print(end - start)
 start = time()
 print(f"Answer to part 2: {part2()}")
 end = time()
-print(end-start)
+print(end - start)

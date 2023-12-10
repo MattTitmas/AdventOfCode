@@ -2,7 +2,7 @@ from itertools import combinations
 
 
 def part1():
-    values = [int(i) for i in open("input.txt","r").read().split("\n")]
+    values = [int(i) for i in open("input.txt", "r").read().split("\n")]
     total = 0
     for i in range(len(values)):
         for j in combinations(values, i):
@@ -12,7 +12,7 @@ def part1():
 
 
 def part2():
-    values = [int(i) for i in open("input.txt","r").read().split("\n")]
+    values = [int(i) for i in open("input.txt", "r").read().split("\n")]
     total = 0
     min = -1
     for i in range(len(values)):
@@ -25,6 +25,6 @@ def part2():
                 else:
                     return total
 
+
 print(f"answer to part1: {part1()}")
 print(f"answer to part2: {part2()}")
-
